@@ -1,0 +1,729 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 50%, #fd79a8 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    position: relative;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.settings-btn {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.baby-photos {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    background: linear-gradient(to right, #ffeaa7, #fab1a0);
+    flex-wrap: wrap;
+}
+
+.baby-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #a29bfe, #fd79a8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.baby-photo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.baby-emoji {
+    font-size: 3rem;
+    z-index: 1;
+}
+
+.calendar-container {
+    padding: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.nav-btn {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: white;
+    border: none;
+    padding: 5px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.month-year {
+    font-size: 1.5rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.calendar {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.day-header {
+    background: linear-gradient(45deg, #a29bfe, #6c5ce7);
+    color: white;
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.day {
+    background: white;
+    min-height: 180px;
+    padding: 8px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    overflow: hidden;
+}
+
+.day:hover {
+    background: #f8f9ff;
+    border-color: #74b9ff;
+    transform: scale(1.02);
+}
+
+.day.other-month {
+    background: #f5f5f5;
+    color: #ccc;
+}
+
+.day.today {
+    background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+    border-color: #e17055;
+    font-weight: bold;
+}
+
+.day.has-food {
+    border-left: 4px solid #00b894;
+}
+
+.day-number {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.food-indicator {
+    display: flex;
+    gap: 3px;
+    margin-top: 5px;
+}
+
+.food-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #fd79a8, #fdcb6e);
+}
+
+.ingredient-tags {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+    /*max-height: 70px;*/
+    overflow: hidden;
+}
+
+.ingredient-tag {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 5px 8px;
+    border-radius: 8px;
+    font-size: 8px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.3s ease;
+}
+
+.ingredient-tag.morning {
+    background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
+    color: #2d3436;
+}
+
+.ingredient-tag.lunch {
+    background: linear-gradient(45deg, #55a3ff, #74b9ff);
+}
+
+.ingredient-tag.dinner {
+    background: linear-gradient(45deg, #fd79a8, #e84393);
+}
+
+.ingredient-tag.snack {
+    background: linear-gradient(45deg, #00b894, #00cec9);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.ingredient-more {
+    background: #636e72;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-size: 0.6rem;
+    text-align: center;
+    margin-top: 2px;
+}
+
+/* Range blocks for continuous ingredients */
+.calendar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.range-block {
+    position: absolute;
+    height: 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.5s ease;
+}
+
+.range-block.morning {
+    background: linear-gradient(45deg, #ffeaa7, #fdcb6e);
+    color: #2d3436;
+    text-shadow: none;
+}
+
+.range-block.lunch {
+    background: linear-gradient(45deg, #55a3ff, #74b9ff);
+}
+
+.range-block.dinner {
+    background: linear-gradient(45deg, #fd79a8, #e84393);
+}
+
+.range-block.snack {
+    background: linear-gradient(45deg, #00b894, #00cec9);
+}
+
+@keyframes slideIn {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* Detail Modal Styles */
+.detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.detail-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.detail-header {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    position: relative;
+}
+
+.detail-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.detail-body {
+    padding: 30px;
+}
+
+.meal-section {
+    margin-bottom: 30px;
+    background: #f8f9ff;
+    border-radius: 15px;
+    padding: 20px;
+    border-left: 5px solid #74b9ff;
+}
+
+.meal-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.meal-title h3 {
+    color: #2d3436;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.add-ingredient-btn {
+    background: linear-gradient(45deg, #00b894, #00cec9);
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.add-ingredient-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ingredient-list {
+    display: grid;
+    gap: 10px;
+}
+
+.ingredient-item {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.ingredient-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.ingredient-info {
+    flex: 1;
+}
+
+.ingredient-name {
+    font-weight: bold;
+    color: #2d3436;
+    margin-bottom: 2px;
+}
+
+.ingredient-amount {
+    color: #636e72;
+    font-size: 0.9rem;
+}
+
+.ingredient-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    padding: 5px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.edit-btn {
+    background: #fdcb6e;
+    color: white;
+}
+
+.delete-btn {
+    background: #e17055;
+    color: white;
+}
+
+.action-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Add/Edit Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1001;
+}
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 500px;
+    width: 90%;
+}
+
+.modal h3 {
+    margin-bottom: 20px;
+    color: #74b9ff;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2d3436;
+}
+
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus, .form-group select:focus {
+    border-color: #74b9ff;
+    outline: none;
+}
+
+.date-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.modal-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.confirm-btn {
+    background: linear-gradient(45deg, #00b894, #00cec9);
+    color: white;
+}
+
+.cancel-btn {
+    background: linear-gradient(45deg, #e17055, #d63031);
+    color: white;
+}
+
+.modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.range-info {
+    background: #e8f4fd;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #0984e3;
+}
+
+/* Settings Modal Styles */
+.settings-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1002;
+}
+
+.settings-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.settings-header {
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    color: white;
+    padding: 20px;
+    border-radius: 20px 20px 0 0;
+    text-align: center;
+    position: relative;
+}
+
+.settings-header h2 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.settings-body {
+    padding: 30px;
+}
+
+.settings-section {
+    margin-bottom: 30px;
+    background: #f8f9ff;
+    border-radius: 15px;
+    padding: 20px;
+    border-left: 5px solid #74b9ff;
+}
+
+.settings-section h3 {
+    color: #2d3436;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.settings-input:focus {
+    border-color: #74b9ff;
+    outline: none;
+}
+
+.settings-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.apply-btn {
+    position: relative;
+    background: #636e72;
+}
+
+.apply-btn.active {
+    background: linear-gradient(45deg, #e17055, #d63031);
+}
+
+.danger-btn {
+    background: linear-gradient(45deg, #e17055, #d63031);
+    position: relative;
+    right: auto;
+    top: auto;
+}
+
+.warning-btn {
+    background: linear-gradient(45deg, #fdcb6e, #e17055);
+}
+
+.month-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.month-item {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.month-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.month-info {
+    flex: 1 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.month-name {
+    font-weight: bold;
+    color: #2d3436;
+    margin-bottom: 2px;
+}
+
+.month-count {
+    color: #636e72;
+    font-size: 0.9rem;
+}
+
+.month-delete-btn {
+    background: linear-gradient(45deg, #e17055, #d63031);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.month-delete-btn:hover {
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
