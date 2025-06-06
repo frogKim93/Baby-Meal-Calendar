@@ -23,7 +23,7 @@ body {
 .header {
     background: linear-gradient(45deg, #74b9ff, #0984e3);
     color: white;
-    padding: 15px;
+    padding: 20px;
     text-align: center;
     position: relative;
 }
@@ -726,4 +726,73 @@ body {
 
 .hidden {
     display: none;
+}
+
+.delete-btn-container {
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    display: flex;
+    font-size: 1rem;
+    font-weight: bolder;
+    gap: 5px;
+    align-items: center;
+}
+
+.delete-btn-container .delete-btn {
+    padding: 2px 6px;
+    font-weight: bolder;
+    font-size: 1rem;
+    cursor: pointer;
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    border: none;
+    border-radius: 5px;
+}
+
+.delete-btn-container .delete-btn.active {
+    background: red;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 95px;
+    right: 10px;
+    font-weight: bolder;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 2px 6px;
+    background: linear-gradient(45deg, #74b9ff, #0984e3);
+    border: none;
+    border-radius: 5px;
+    color: white;
+}
+
+.banner-container {
+    position: fixed;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px;
+    font-size: 20px;
+    white-space: break-spaces;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    text-align: center;
+    background: #55a3ff;
+    color: white;
+    font-weight: bolder;
+    border-radius: 10px;
+}
+
+.banner-container button {
+    font-size: 20px;
+    padding: 4px 6px;
+    background: red;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    cursor: pointer;
 }

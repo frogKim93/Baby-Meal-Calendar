@@ -3,7 +3,11 @@ import {SettingPopup} from "./popup/SettingPopup";
 import {DEFAULT} from "../config/Default";
 
 interface Props {
-    refresh: () => void
+    refresh: () => void;
+    isDeleteMode: boolean;
+    toggleDeleteMode: () => void;
+    isCopyMode: boolean;
+    toggleCopyMode: () => void;
 }
 
 export const Header = (props: Props) => {
@@ -40,6 +44,17 @@ export const Header = (props: Props) => {
             <h1>{title}</h1>
             <p>{subTitle}</p>
             <button onClick={() => setVisibleSettingPopup(!isVisibleSettingPopup)} className="settings-btn">설정</button>
+            {!props.isCopyMode &&
+                <div className="delete-btn-container">
+                    <span>삭제 모드</span>
+                    <button onClick={() => props.toggleDeleteMode()}
+                            className={`delete-btn ${props.isDeleteMode && "active"}`}>{props.isDeleteMode ? "ON" : "OFF"}
+                    </button>
+                </div>
+            }
+
+            {!props.isDeleteMode && <button onClick={() => props.toggleCopyMode()} className="copy-btn">복사하기</button>}
+
 
             {isVisibleSettingPopup && <SettingPopup title={title} subTitle={subTitle} setTitles={setTitles}
                                                     close={() => setVisibleSettingPopup(false)}

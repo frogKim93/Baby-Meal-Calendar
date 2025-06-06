@@ -6,7 +6,9 @@ import {GetDays, UpdateDay} from "../../utils/LocalStorageManager";
 const weeks = ['일', '월', '화', '수', '목', '금', '토'];
 
 interface Props {
-    setDay: (day: Day | null) => void
+    setDay: (day: Day) => void;
+    isDeleteMode: boolean;
+    isCopyMode: boolean;
 }
 
 export interface CalendarRef {
@@ -102,10 +104,12 @@ export const Calendar = forwardRef<CalendarRef, Props>((props, ref) => {
     }
 
     const removeMeal = (event: React.MouseEvent, day: Day, targetMeal: Meal) => {
-        event.stopPropagation();
-        day.meals = day.meals.filter(meal => meal !== targetMeal);
-        UpdateDay(day);
-        renderCalendar();
+        if (props.isDeleteMode) {
+            event.stopPropagation();
+            day.meals = day.meals.filter(meal => meal !== targetMeal);
+            UpdateDay(day);
+            renderCalendar();
+        }
     }
 
     return (
