@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Day} from "../../interfaces/Day";
 import {Meal, Time, TimeList} from "../../interfaces/Meal";
 import {AddPopup} from "./AddPopup";
@@ -77,7 +77,8 @@ export const DetailPopup = (props: Props) => {
                                                 <div key={meal.name} className="ingredient-item">
                                                     <div className="ingredient-info">
                                                         <div className="ingredient-name">{meal.name}</div>
-                                                        <div className="ingredient-amount">{meal.weight}g</div>
+                                                        {meal.weight > 0 &&
+                                                            <div className="ingredient-amount">{meal.weight}g</div>}
                                                     </div>
                                                     <div className="ingredient-actions">
                                                         <button onClick={() => edit(meal)}

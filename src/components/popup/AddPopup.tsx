@@ -42,7 +42,7 @@ export const AddPopup = (props: Props) => {
         if (target.id === "ingredientName") {
             setMeal({...meal, name: target.value});
         } else if (target.id === "ingredientAmount") {
-            target.value = parseInt(target.value).toString();
+            target.value = parseInt(target.value === "" ? "0" : target.value).toString();
             setMeal({...meal, weight: parseInt(target.value)});
         } else {
             setMeal({...meal, time: TimeList()[parseInt(target.value)]});
@@ -50,7 +50,7 @@ export const AddPopup = (props: Props) => {
     }
 
     const save = () => {
-        if (meal.name === "" || meal.weight === 0) {
+        if (meal.name === "") {
             alert("다시 한 번 확인해주세요.");
             return;
         }

@@ -140,7 +140,7 @@ export const Calendar = forwardRef<CalendarRef, Props>((props, ref) => {
                                     return (
                                         <div onClick={e => removeMeal(e, day, meal)} key={mealIndex}
                                              className={`ingredient-tag ${TimeClassName(meal.time)}`}>
-                                            {`${meal.name} ${meal.weight}g`}
+                                            {`${meal.name}${meal.weight ? ` ${meal.weight}g` : ''}`}
                                         </div>
                                     )
                                 })}
